@@ -1,10 +1,24 @@
-- name: GitHub Pages
-  on:
-    push:
-      tags:
-        - "*"
-  # uses: crazy-max/ghaction-github-pages@a117e4aa1fb4854d021546d2abdfac95be568a3a
-  uses: crazy-max/ghaction-github-pages@v2.6.0
-  with:
-    # Build directory to deploy
-    build_dir: dist
+name: gh-pages
+
+on: push
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.1.1
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+    -
+      name: NPM install
+      run: npm install
+    -
+      name: NPM build
+      run: npm run build
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: dist # The folder the action should deploy.
