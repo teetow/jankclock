@@ -6,7 +6,7 @@ on:
 jobs:
   deploy:
     # uses: crazy-max/ghaction-github-pages@a117e4aa1fb4854d021546d2abdfac95be568a3a
-    uses: crazy-max/ghaction-github-pages
+    uses: crazy-max/ghaction-github-pages@v2
     with:
       # Build directory to deploy
       build_dir: dist
