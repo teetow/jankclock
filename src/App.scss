@@ -1,0 +1,27 @@
+html {
+  height: 100vh;
+}
+
+body,
+html {
+  background: #222;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.App {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-areas: "main";
+}
+
+.layer {
+  grid-area: main;
+}
