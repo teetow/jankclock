@@ -1,4 +1,4 @@
-name: website
+name: gh-pages
 
 on: push
 
@@ -6,19 +6,21 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Gen dummy page
-        run: |
-          npm run build
-      -
-        name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.1.1
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+    -
+      name: Gen dummy page
+      run: |
+        npm run build
+    -
+      name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: dist
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
